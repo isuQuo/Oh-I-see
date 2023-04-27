@@ -8,11 +8,14 @@ import (
 	"net"
 	"net/http"
 	"time"
+
+	"github.com/isuQuo/OhISee/cmd/cli/datatypes"
 )
 
 type AbuseIPDBClient struct {
-	http   *http.Client
-	APIKey string
+	http     *http.Client
+	APIKey   string
+	DataType datatypes.DataType
 }
 
 func NewAbuseIPDBClient(apiKey string) *AbuseIPDBClient {
@@ -22,6 +25,10 @@ func NewAbuseIPDBClient(apiKey string) *AbuseIPDBClient {
 		},
 		APIKey: apiKey,
 	}
+}
+
+func (c *AbuseIPDBClient) SetDataType(dataType datatypes.DataType) {
+	c.DataType = dataType
 }
 
 func (c *AbuseIPDBClient) CheckIP(ip string) (interface{}, error) {

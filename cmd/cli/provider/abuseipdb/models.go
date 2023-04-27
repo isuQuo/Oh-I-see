@@ -1,6 +1,10 @@
 package abuseipdb
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/isuQuo/OhISee/cmd/cli/datatypes"
+)
 
 type AbuseIpDbCheckResponse struct {
 	Data AbuseIpDbCheckData `json:"data"`
@@ -31,7 +35,12 @@ type AbuseIpDbRateLimit struct {
 }
 
 func (c *AbuseIPDBClient) GetHeaders() []string {
-	return []string{"IP", "Abuse Confidence Score", "Country", "Usage Type", "ISP", "Domain", "Last Reported"}
+	switch c.DataType {
+	case datatypes.IP:
+		return []string{"IP", "Abuse Confidence Score", "Country", "Usage Type", "ISP", "Domain", "Last Reported"}
+	}
+
+	return nil
 }
 
 func (c *AbuseIPDBClient) GetValues(ipInfo interface{}) []string {

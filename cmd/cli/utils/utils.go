@@ -83,6 +83,7 @@ func IsAny(indicator string, provider provider.Provider) interface{} {
 			log.Printf("Error fetching info for URL %s: %v", indicator, err)
 			return nil
 		}
+		provider.SetDataType("url")
 		return indicator
 
 	} else if isIPAddress(indicator) {
@@ -91,6 +92,7 @@ func IsAny(indicator string, provider provider.Provider) interface{} {
 			log.Printf("Error fetching info for IP %s: %v", indicator, err)
 			return nil
 		}
+		provider.SetDataType("ip")
 		return indicator
 
 	} else if isHash(indicator) {
@@ -99,6 +101,7 @@ func IsAny(indicator string, provider provider.Provider) interface{} {
 			log.Printf("Error fetching info for hash %s: %v", indicator, err)
 			return nil
 		}
+		provider.SetDataType("hash")
 		return indicator
 
 	} else {

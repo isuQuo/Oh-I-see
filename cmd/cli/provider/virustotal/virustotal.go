@@ -6,11 +6,14 @@ import (
 	"fmt"
 	"net/http"
 	"time"
+
+	"github.com/isuQuo/OhISee/cmd/cli/datatypes"
 )
 
 type VirusTotalClient struct {
-	http   *http.Client
-	APIKey string
+	http     *http.Client
+	APIKey   string
+	DataType datatypes.DataType
 }
 
 func NewVirusTotalClient(apiKey string) *VirusTotalClient {
@@ -20,6 +23,10 @@ func NewVirusTotalClient(apiKey string) *VirusTotalClient {
 		},
 		APIKey: apiKey,
 	}
+}
+
+func (c *VirusTotalClient) SetDataType(dataType datatypes.DataType) {
+	c.DataType = dataType
 }
 
 // Not yet implemented

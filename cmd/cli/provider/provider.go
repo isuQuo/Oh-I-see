@@ -2,6 +2,7 @@ package provider
 
 import (
 	"github.com/isuQuo/OhISee/cmd/cli/config"
+	"github.com/isuQuo/OhISee/cmd/cli/datatypes"
 	"github.com/isuQuo/OhISee/cmd/cli/provider/abuseipdb"
 	"github.com/isuQuo/OhISee/cmd/cli/provider/virustotal"
 )
@@ -13,6 +14,7 @@ type Provider interface {
 
 	GetHeaders() []string
 	GetValues(info interface{}) []string
+	SetDataType(dataType datatypes.DataType)
 }
 
 func GetProvider(method string, config *config.Configuration) Provider {

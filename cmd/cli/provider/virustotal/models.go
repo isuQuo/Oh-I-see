@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"strings"
 	"time"
+
+	"github.com/isuQuo/OhISee/cmd/cli/datatypes"
 )
 
 type VirusTotalResponse struct {
@@ -49,7 +51,12 @@ type ThreatCount struct {
 }
 
 func (c *VirusTotalClient) GetHeaders() []string {
-	return []string{"IP", "Type Description", "Type Tags", "Creation Date", "Names", "Last Modification Date", "Type Tag", "Times Submitted", "Total Votes Harmless", "Total Votes Malicious", "Size", "Suggested Threat Label", "Popular Threat Category", "Popular Threat Name", "Last Submission Date", "Meaningful Name", "SHA256", "Type Extension"}
+	switch c.DataType {
+	case datatypes.HASH:
+		return []string{"Type Description", "Type Tags", "Creation Date", "Names", "Last Modification Date", "Type Tag", "Times Submitted", "Total Votes Harmless", "Total Votes Malicious", "Size", "Suggested Threat Label", "Popular Threat Category", "Popular Threat Name", "Last Submission Date", "Meaningful Name", "SHA256", "Type Extension"}
+	}
+
+	return nil
 }
 
 func (c *VirusTotalClient) GetValues(ipInfo interface{}) []string {
