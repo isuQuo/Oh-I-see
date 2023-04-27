@@ -3,12 +3,15 @@ This is an IOC Reputation Checker built with Go.
 
 # usage
 ```
--in string
-    	input file. List of indicators separated by newlines
-  -method string
-    	Choices are [abuseipdb vt]
-  -out string
-    	output file. Choices are [csv json]
+cd cmd/cli
+go run . -h
+
+  -in string
+        input file. List of indicators separated by newlines
+    -method string
+        Choices are [abuseipdb vt]
+    -out string
+        output file. Choices are [csv json]
 ```
 
 # Currently Supported
