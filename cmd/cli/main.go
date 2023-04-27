@@ -18,7 +18,7 @@ func main() {
 	availableMethods := []string{"abuseipdb", "vt"}
 	availableExports := []string{"csv", "json"}
 
-	inputFile := flag.String("in", "", "input file. List of IPs separated by newlines")
+	inputFile := flag.String("in", "", "input file. List of indicators separated by newlines")
 	outputFile := flag.String("out", "", fmt.Sprintf("output file. Choices are %s", availableExports))
 	checkMethod := flag.String("method", "", fmt.Sprintf("Choices are %s", availableMethods))
 	flag.Parse()
